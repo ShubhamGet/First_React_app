@@ -29,6 +29,11 @@ export default function TextForm(props) {
         let newText = text.reverse();
         setText(newText);
     }
+    // remove extra space
+    const handleExtraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
 
     const [text, setText] = useState("");
     return (
@@ -42,6 +47,8 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert to Lowercase </button>
                 <button className="btn btn-primary mx-2" onClick={handleClear}>Clear text</button>
                 <button className="btn btn-primary mx-2" onClick={handleReverseClick}>Reverse the text</button>
+                <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Space</button>
+
             </div>
             <div className='container my-2'>
                 <h2>Your text summary</h2>
