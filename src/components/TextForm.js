@@ -12,6 +12,7 @@ export default function TextForm(props) {
         console.log("Upper case got clicked" + text)
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Uppercase ", "Success");
     }
 
     // for lowercase 
@@ -19,12 +20,14 @@ export default function TextForm(props) {
         console.log("Lower case got clicked" + text)
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Lowercase ", "Success");
     }
     // for clear text
     const handleClear = () => {
         console.log("Lower case got clicked" + text)
         let newText = " ";
         setText(newText);
+        props.showAlert("Text has been cleared ", "Success");
     }
     // for reverse content 
     const handleReverseClick = () => {
@@ -36,6 +39,7 @@ export default function TextForm(props) {
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+        props.showAlert("Extra Space has been removed ", "Success");
     }
 
     const [text, setText] = useState("");
@@ -47,7 +51,7 @@ export default function TextForm(props) {
                     <textarea class="form-control" value={text} onChange={handleOnChange} style={{
                         backgroundColor: props.mode === 'dark' ? 'grey' : 'white',
                         color: props.mode === 'dark' ? 'white' : 'black'
-                    }} id="floatingTextarea" rows="8"></textarea>
+                    }} id="floatingTextarea"></textarea>
                 </div><br />
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase </button>
                 <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert to Lowercase </button>
